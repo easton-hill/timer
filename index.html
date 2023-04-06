@@ -14,20 +14,27 @@
   <body>
     <div id="main">
       <div id="menu">
-        <label for="interval">Interval</label>
-        <input type="number" id="interval" name="interval" value="3">
-        <br/>
-        <label for="break">Break</label>
-        <input type="number" id="break" name="break" value="2">
-        <br/>
-        <label for="sound">Sound</label>
-        <input type="checkbox" id="sound" name="sound" checked>
-        <br/>
-        <button type="button" onclick="countdown()">Start</button>
+        <div id="labels">
+          <label for="interval">Interval:</label>
+          <br/>
+          <label for="break">Break:</label>
+          <br/>
+          <label for="sound">Sound:</label>
+          <br/>
+        </div>
+        <div id="inputs">
+          <input type="number" id="interval" name="interval" onchange="updateDisplay()" value="30">
+          <br/>
+          <input type="number" id="break" name="break" onchange="updateDisplay()" value="5">
+          <br/>
+          <input type="checkbox" id="sound" name="sound" checked>
+          <br/>
+        </div>
       </div>
+      <button type="button" id="start-or-reset" class="start" onclick="countdown()">Start</button>
       <div id="countdown">
-        <h1 id="break-timer">2</h1>
-        <h1 id="interval-timer">3</h1>
+        <p id="break-timer">5</p>
+        <p id="interval-timer">30</p>
       </div>
     </div>
   </body>

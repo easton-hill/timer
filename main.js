@@ -4,12 +4,12 @@ const countdown = () => {
   const intervalTimer = document.getElementById("interval-timer");
   const breakTimer = document.getElementById("break-timer");
 
+  const playSound = document.getElementById("sound").checked;
+  const audio = new Audio("ding.mp3");
+
   let currentType = "interval";
   let currentInterval = intervalDuration;
   let currentBreak = breakDuration;
-
-  const now = new Date(Date.now());
-  console.log(now.getSeconds());
 
   setInterval(() => {
     if (currentType === "interval") {
@@ -17,9 +17,11 @@ const countdown = () => {
       intervalTimer.innerText = currentInterval;
 
       if (currentInterval === 0) {
+        if (playSound) {
+          audio.play();
+        }
+
         currentInterval = intervalDuration + 1;
-        const now = new Date(Date.now());
-        console.log(now.getSeconds());
         currentType = "break";
       }
     } else if (currentType === "break") {
@@ -32,4 +34,14 @@ const countdown = () => {
       }
     }
   }, 1000);
+};
+
+const updateDisplay = () => {
+  const intervalDuration = parseInt(document.getElementById("interval").value);
+  const breakDuration = parseInt(document.getElementById("break").value);
+  const intervalTimer = document.getElementById("interval-timer");
+  const breakTimer = document.getElementById("break-timer");
+
+  intervalTimer.innerText = intervalDuration;
+  breakTimer.innerText = breakDuration;
 };

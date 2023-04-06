@@ -1,11 +1,71 @@
 body {
   margin: 0;
   font-size: 24px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #main {
   width: 300px;
   margin: auto;
   margin-top: 50px;
+  text-align: center;
+}
+
+#menu {
+  display: flex;
+}
+
+#labels {
+  width: 50%;
+  text-align: right;
+  padding-right: 5px;
+  line-height: 40px;
+  padding-top: 1px;
+}
+
+#inputs {
+  width: 50%;
+  text-align: left;
+  padding-left: 5px;
+  line-height: 40px;
+}
+
+input {
+  font-size: 16px;
+  width: 35px;
+  text-align: center;
+  padding: 2px;
   border: 1px solid black;
+  outline: none;
+}
+
+#sound {
+  height: 15px;
+}
+
+#start-or-reset {
+  font-size: 24px;
+  border-radius: 5px;
+  color: white;
+  padding: 5px 15px;
+  margin-top: 25px;
+}
+
+.start {
+  background-color: green;
+  border: 1px solid green;
+}
+
+.reset {
+  background-color: red;
+  border: 1px solid red;
+}
+
+#break-timer {
+  margin-top: 50px;
+}
+
+#interval-timer {
+  font-size: 64px;
+  margin: 0;
 }
