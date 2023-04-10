@@ -1,3 +1,6 @@
+let intervalId;
+let isCounting = false;
+
 const populateValues = () => {
   if (!localStorage.getItem("intervalValue")) {
     localStorage.setItem("intervalValue", 30);
@@ -22,7 +25,9 @@ const updateIntervalValue = () => {
   const intervalDuration = parseInt(document.getElementById("interval").value);
   const intervalTimer = document.getElementById("interval-timer");
 
-  intervalTimer.innerText = intervalDuration;
+  if (!isCounting) {
+    intervalTimer.innerText = intervalDuration;
+  }
   localStorage.setItem("intervalValue", intervalDuration);
 };
 
@@ -30,8 +35,28 @@ const updateBreakValue = () => {
   const breakDuration = parseInt(document.getElementById("break").value);
   const breakTimer = document.getElementById("break-timer");
 
-  breakTimer.innerText = breakDuration;
+  if (!isCounting) {
+    breakTimer.innerText = breakDuration;
+  }
   localStorage.setItem("breakValue", breakDuration);
+};
+
+const handleClick = () => {
+  const startResetButton = document.getElementById("start-or-reset");
+  if (!isCounting) {
+    startResetButton.innerText = "Reset";
+    startResetButton.classList.remove("start");
+    startResetButton.classList.add("reset");
+    isCounting = true;
+    countdown();
+  } else {
+    startResetButton.innerText = "Start";
+    startResetButton.classList.remove("reset");
+    startResetButton.classList.add("start");
+    clearInterval(intervalId);
+    isCounting = false;
+    populateValues();
+  }
 };
 
 const countdown = () => {
@@ -47,7 +72,7 @@ const countdown = () => {
   let currentInterval = intervalDuration;
   let currentBreak = breakDuration;
 
-  setInterval(() => {
+  intervalId = setInterval(() => {
     if (currentType === "interval") {
       currentInterval--;
       intervalTimer.innerText = currentInterval;
