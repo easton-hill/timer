@@ -11,7 +11,7 @@
 
   </head>
 
-  <body>
+  <body onload="populateValues()">
     <div id="main">
       <div id="menu">
         <div id="labels">
@@ -23,9 +23,9 @@
           <br/>
         </div>
         <div id="inputs">
-          <input type="number" id="interval" name="interval" onchange="updateDisplay()" value="30">
+          <input type="number" id="interval" name="interval" onchange="updateIntervalValue()">
           <br/>
-          <input type="number" id="break" name="break" onchange="updateDisplay()" value="5">
+          <input type="number" id="break" name="break" onchange="updateBreakValue()">
           <br/>
           <input type="checkbox" id="sound" name="sound" checked>
           <br/>
@@ -33,8 +33,8 @@
       </div>
       <button type="button" id="start-or-reset" class="start" onclick="countdown()">Start</button>
       <div id="countdown">
-        <p id="break-timer">5</p>
-        <p id="interval-timer">30</p>
+        <p id="break-timer"></p>
+        <p id="interval-timer"></p>
       </div>
     </div>
   </body>

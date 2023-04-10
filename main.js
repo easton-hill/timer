@@ -1,3 +1,39 @@
+const populateValues = () => {
+  if (!localStorage.getItem("intervalValue")) {
+    localStorage.setItem("intervalValue", 30);
+  }
+
+  const intervalDuration = localStorage.getItem("intervalValue");
+  const intervalTimer = document.getElementById("interval-timer");
+  document.getElementById("interval").value = intervalDuration;
+  intervalTimer.innerText = intervalDuration;
+
+  if (!localStorage.getItem("breakValue")) {
+    localStorage.setItem("breakValue", 5);
+  }
+
+  const breakDuration = localStorage.getItem("breakValue");
+  const breakTimer = document.getElementById("break-timer");
+  document.getElementById("break").value = breakDuration;
+  breakTimer.innerText = breakDuration;
+};
+
+const updateIntervalValue = () => {
+  const intervalDuration = parseInt(document.getElementById("interval").value);
+  const intervalTimer = document.getElementById("interval-timer");
+
+  intervalTimer.innerText = intervalDuration;
+  localStorage.setItem("intervalValue", intervalDuration);
+};
+
+const updateBreakValue = () => {
+  const breakDuration = parseInt(document.getElementById("break").value);
+  const breakTimer = document.getElementById("break-timer");
+
+  breakTimer.innerText = breakDuration;
+  localStorage.setItem("breakValue", breakDuration);
+};
+
 const countdown = () => {
   const intervalDuration = parseInt(document.getElementById("interval").value);
   const breakDuration = parseInt(document.getElementById("break").value);
@@ -34,14 +70,4 @@ const countdown = () => {
       }
     }
   }, 1000);
-};
-
-const updateDisplay = () => {
-  const intervalDuration = parseInt(document.getElementById("interval").value);
-  const breakDuration = parseInt(document.getElementById("break").value);
-  const intervalTimer = document.getElementById("interval-timer");
-  const breakTimer = document.getElementById("break-timer");
-
-  intervalTimer.innerText = intervalDuration;
-  breakTimer.innerText = breakDuration;
 };
