@@ -68,7 +68,7 @@ const countdown = () => {
   const playSound = document.getElementById("sound").checked;
   const audio = new Audio("ding.mp3");
 
-  let currentType = "interval";
+  let currentType = "break";
   let currentInterval = intervalDuration;
   let currentBreak = breakDuration;
 
